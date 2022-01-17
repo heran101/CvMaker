@@ -6,13 +6,29 @@
   margin-top: 5vh;
   height: 60vh;
 }
+.stepper-style {
+  width: 100% !important;
+  display: flex !important;
+}
+.forms {
+  margin-top: 5vh !important;
+}
 .form-header {
-  text-align: center;
+  text-align: left;
   margin-top: 10px !important;
-  padding: 5px !important;
+  padding: 5px 5px 0px 5vw !important;
 }
 .action-buttons {
   display: flex !important;
   width: 100%;
   justify-content: space-evenly !important;
+}
+/* connector line of stepper */
+.css-8t49rw-MuiStepConnector-line {
+  margin: 0 99%;
+}
+/* title of stepper */
+.css-ahj2mt-MuiTypography-root {
+  margin: 0 10px !important;
+  font-size: 0.8rem !important;
 }

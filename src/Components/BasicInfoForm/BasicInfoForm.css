@@ -1,7 +1,11 @@
 .main-form {
-  margin: 20px;
+  margin: 0.3vw 1vw;
+  width: 100% !important;
 }
 .action-buttons {
   display: flex;
   justify-content: space-evenly;
+}
+.formInput-columns {
+  width: 100%;
 }

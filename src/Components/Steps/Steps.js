@@ -1,24 +1,18 @@
 import React, { useState, useContext } from "react";
 import "./Steps.css";
-import { makeStyles } from "@mui/styles";
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepButton from "@mui/material/StepButton";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { StepContext } from "../../Context/FormDataContext";
-import Grid from "@mui/material/Grid";
+import {
+  FormControlLabel,
+  StepLabel,
+  Grid,
+  Typography,
+  Button,
+  Step,
+  Stepper,
+  Box,
+} from "@mui/material";
 import StepsData from "../../Data/StepsData";
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-});
 const Steps = () => {
-  const classes = useStyles();
-
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState({});
 
@@ -71,23 +65,24 @@ const Steps = () => {
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item xs={2} sm={2} md={4}>
+        <Grid item xs={2} sm={2} md={3}>
           <Box className="main-container">
             <Stepper
               nonLinear
               activeStep={activeStep}
               orientation="vertical"
-              classes={classes}
+              className="stepper-style"
             >
               {StepsData.map(({ label, form }, index) => (
                 <Step key={label} completed={completed[index]}>
-                  <StepButton color="inherit" onClick={handleStep(index)}>
-                    <Typography
-                      sx={{ display: { xs: "none", md: "block", sm: "none" } }}
-                    >
-                      {label}
-                    </Typography>
-                  </StepButton>
+                  <FormControlLabel
+                    value={label}
+                    control={<StepLabel />}
+                    labelPlacement="start"
+                    label={label}
+                    className="stepper-style"
+                    onClick={handleStep(index)}
+                  />
                 </Step>
               ))}
             </Stepper>
@@ -113,7 +108,7 @@ const Steps = () => {
             <React.Fragment>
               <Box>
                 {" "}
-                <Typography className="form-header" variant="h5">
+                <Typography className="form-header" variant="h6">
                   {StepsData[activeStep].label}
                 </Typography>
                 {StepsData[activeStep].form}
