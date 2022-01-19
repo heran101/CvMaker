@@ -3,24 +3,48 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5vh;
-  height: 60vh;
+  margin-top: 2vh;
 }
+
 .stepper-style {
   width: 100% !important;
   display: flex !important;
 }
-.forms {
+.step-lable {
+  display: block;
+}
+.stepper-columon {
   margin-top: 5vh !important;
+}
+.forms {
+  margin-top: 12vh !important;
+  padding: 0 5vw 0 0 !important;
+  margin-bottom: 0 !important;
 }
 .form-header {
   text-align: left;
-  margin-top: 10px !important;
-  padding: 5px 5px 0px 5vw !important;
+  margin: 15px 0 !important;
+  padding: 0 5px 0 3vw !important;
+}
+.submit-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  margin-bottom: 0 !important;
 }
 .action-buttons {
   display: flex !important;
+  margin: 0;
   width: 100%;
+  padding: 7px;
+  justify-content: flex-end !important;
+}
+.final-action-buttons {
+  display: flex !important;
+  margin: 0;
+  width: 100%;
+  padding: 7px;
   justify-content: space-evenly !important;
 }
 /* connector line of stepper */
@@ -31,4 +55,18 @@
 .css-ahj2mt-MuiTypography-root {
   margin: 0 10px !important;
   font-size: 0.8rem !important;
+  text-align: right;
+}
+.css-e784if-MuiTypography-root {
+  margin: 0;
+  font-weight: 500 !important;
+  font-size: 1.05rem !important;
+  text-align: right;
+}
+.css-uph6bf-MuiTypography-root {
+  margin: 0;
+  font-weight: 300 !important;
+  font-size: 0.75rem !important;
+  display: flex;
+  justify-content: right;
 }

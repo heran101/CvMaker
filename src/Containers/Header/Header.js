@@ -3,14 +3,10 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 const Header = () => {
@@ -75,25 +71,9 @@ const Header = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" color="inherit">
-          <Badge badgeContent={4} color="primary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>CvMaker</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton size="large" color="inherit">
-          <Badge badgeContent={4} color="primary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Inbox</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          size="large"
+          size="small"
           aria-controls="search-account-menu"
           aria-haspopup="true"
           color="inherit"
@@ -114,55 +94,16 @@ const Header = () => {
           <Toolbar>
             {/* <img src={HeaderLogo} alt="Logo" style={{ height: "30px" }} /> */}
 
-            <Typography variant="h6" noWrap component="div">
-              CvMaker
-            </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton size="large" color="inherit">
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-                  textAlign="center"
-                >
-                  Blog
-                </Typography>
-
-                <Badge badgeContent={9} color="primary"></Badge>
-              </IconButton>
-
-              <IconButton size="large" color="inherit">
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-                  textAlign="center"
-                >
-                  Inbox
-                </Typography>
-
-                <Badge badgeContent={2} color="primary"></Badge>
-              </IconButton>
               <IconButton
-                size="large"
+                size="small"
                 edge="end"
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-                  textAlign="center"
-                >
-                  Heran Tse
-                </Typography>
                 <Avatar alt="Heran Tse" src="" />
               </IconButton>
             </Box>

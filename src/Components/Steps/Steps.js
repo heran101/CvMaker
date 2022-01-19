@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./Steps.css";
-import { StepContext } from "../../Context/FormDataContext";
 import {
   FormControlLabel,
   StepLabel,
@@ -10,6 +9,7 @@ import {
   Step,
   Stepper,
   Box,
+  Divider,
 } from "@mui/material";
 import StepsData from "../../Data/StepsData";
 const Steps = () => {
@@ -65,7 +65,7 @@ const Steps = () => {
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item xs={2} sm={2} md={3}>
+        <Grid item className="stepper-columon" xs={2} sm={2} md={4}>
           <Box className="main-container">
             <Stepper
               nonLinear
@@ -73,13 +73,22 @@ const Steps = () => {
               orientation="vertical"
               className="stepper-style"
             >
-              {StepsData.map(({ label, form }, index) => (
+              {StepsData.map(({ label, description, form }, index) => (
                 <Step key={label} completed={completed[index]}>
                   <FormControlLabel
                     value={label}
                     control={<StepLabel />}
                     labelPlacement="start"
-                    label={label}
+                    label={
+                      <React.Fragment>
+                        <Typography component="div" variant="body2">
+                          {label}
+                        </Typography>
+                        <Typography textAlign="left" variant="caption">
+                          {description}
+                        </Typography>
+                      </React.Fragment>
+                    }
                     className="stepper-style"
                     onClick={handleStep(index)}
                   />
@@ -89,18 +98,18 @@ const Steps = () => {
           </Box>
         </Grid>
 
-        <Grid item className="forms" xs={8} sm={8} md={8}>
+        <Grid item className="forms" xs={8} sm={8} md={7}>
           {allStepsCompleted() ? (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 4 }}>
                 All steps completed - you&apos;re finished
               </Typography>
-              <Box className="action-buttons">
+              <Box className="final-action-buttons">
                 <Button variant="outlined" onClick={handleReset}>
                   Build CV
                 </Button>
                 <Button variant="outlined" onClick={handleReset}>
-                  Reset
+                  Review
                 </Button>
               </Box>
             </React.Fragment>
@@ -113,48 +122,24 @@ const Steps = () => {
                 </Typography>
                 {StepsData[activeStep].form}
               </Box>
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Box className="action-buttons">
-                  <Button
-                    variant="outlined"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                  >
-                    Back
-                  </Button>
-                  {activeStep !== StepsData.length &&
-                    (completed[activeStep] ? (
-                      <Box>
-                        <Typography
-                          variant="caption"
-                          sx={{ display: "inline-block" }}
-                        >
-                          Step {activeStep + 1} already completed
-                        </Typography>
-                      </Box>
-                    ) : (
-                      <Box>
-                        <Button variant="outlined" onClick={handleComplete}>
-                          {completedSteps() === totalSteps() - 1
-                            ? "Finish"
-                            : "Submit"}
-                        </Button>
-                      </Box>
-                    ))}
-                  <Box>
-                    <Button
-                      variant="outlined"
-                      onClick={handleNext}
-                      sx={{ mr: 1 }}
-                    >
-                      Next
-                    </Button>
-                  </Box>
-                </Box>
-              </Box>
             </React.Fragment>
           )}
         </Grid>
+        {!allStepsCompleted() ? (
+          <Box className="action-buttons">
+            <Button disabled={activeStep === 0} onClick={handleBack}>
+              Back
+            </Button>
+            <Divider orientation="vertical" flexItem />
+            <Button onClick={handleComplete}>
+              {completedSteps() === totalSteps() - 1 ? "Finish" : "Next"}
+            </Button>
+          </Box>
+        ) : (
+          <Box sx={{ m: 2 }}>
+            <Button></Button>
+          </Box>
+        )}
       </Grid>
     </>
   );
