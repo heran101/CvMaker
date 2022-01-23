@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Steps.css";
 import {
   FormControlLabel,
@@ -12,10 +12,11 @@ import {
   Divider,
 } from "@mui/material";
 import StepsData from "../../Data/StepsData";
+import { FormDataContext } from "../../Context/FormDataContext";
 const Steps = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState({});
-
+  const formData = useContext(FormDataContext);
   const totalSteps = () => {
     return StepsData.length;
   };
@@ -61,6 +62,9 @@ const Steps = () => {
     setActiveStep(0);
     setCompleted({});
   };
+  const sendData = () => {
+    console.log("data::", formData.formData);
+  };
 
   return (
     <>
@@ -105,7 +109,7 @@ const Steps = () => {
                 All steps completed - you&apos;re finished
               </Typography>
               <Box className="final-action-buttons">
-                <Button variant="outlined" onClick={handleReset}>
+                <Button variant="outlined" onClick={sendData}>
                   Build CV
                 </Button>
                 <Button variant="outlined" onClick={handleReset}>
