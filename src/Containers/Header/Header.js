@@ -8,6 +8,7 @@ import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Login from "../../Components/Login/Login";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -96,7 +97,10 @@ const Header = () => {
 
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton
+              <div className="g-signin">
+                <Login />
+              </div>
+              {/* <IconButton
                 size="small"
                 edge="end"
                 aria-controls={menuId}
@@ -105,7 +109,7 @@ const Header = () => {
                 color="inherit"
               >
                 <Avatar alt="Heran Tse" src="" />
-              </IconButton>
+              </IconButton> */}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
